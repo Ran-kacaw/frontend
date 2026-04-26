@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { api, USE_MOCK } from '../utils/api'
-import { mockHistory } from '../mock/mockData'
 import toast from 'react-hot-toast'
 
 export const useHistory = () => {
@@ -12,8 +11,10 @@ export const useHistory = () => {
     setLoading(true)
     try {
       if (USE_MOCK) {
-        await new Promise((resolve) => setTimeout(resolve, 800))
-        setHistory(mockHistory)
+        // Only seed mock data if historyList is completely empty (first run)
+        // Zustand persist already restores saved history from localStorage
+        // Do NOT overwrite existing data
+        setLoading(false)
         return
       }
       const { data } = await api.get('/api/history')

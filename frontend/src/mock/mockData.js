@@ -15,38 +15,6 @@ export const mockDetectionResult = {
 
 export const mockProducts = mockDetectionResult.products
 
-export const mockHistory = [
-  {
-    id: 'h1',
-    imageUrl: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=200&h=200&fit=crop',
-    date: '2024-01-15T10:30:00Z',
-    acneCount: 8,
-    severity: 'Mild',
-    areas: ['Dahi', 'Hidung'],
-  },
-  {
-    id: 'h2',
-    imageUrl: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=200&h=200&fit=crop',
-    date: '2024-01-10T14:20:00Z',
-    acneCount: 15,
-    severity: 'Severe',
-    areas: ['Pipi Kanan', 'Pipi Kiri', 'Dahi', 'Hidung', 'Dagu'],
-  },
-  {
-    id: 'h3',
-    imageUrl: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=200&h=200&fit=crop',
-    date: '2024-01-05T09:00:00Z',
-    acneCount: 12,
-    severity: 'Moderate',
-    areas: ['Pipi Kiri', 'Dahi'],
-  },
-  {
-    id: 'h4',
-    imageUrl: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=200&h=200&fit=crop',
-    date: '2023-12-28T16:45:00Z',
-    acneCount: 5,
-    severity: 'Mild',
-    areas: ['Hidung'],
-  },
-]
+export const mockHistory = []
+
 

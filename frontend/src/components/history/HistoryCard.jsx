@@ -18,7 +18,7 @@ const HistoryCard = ({ item, onDelete }) => {
     <>
       <div
         onClick={() => navigate(`/history/${item.id}`)}
-        className="bg-white rounded-xl p-4 shadow-sm flex gap-4 items-center cursor-pointer hover:shadow-md transition"
+        className="group bg-white rounded-xl p-4 shadow-sm flex gap-4 items-center cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       >
         <img
           src={item.imageUrl}
@@ -42,7 +42,7 @@ const HistoryCard = ({ item, onDelete }) => {
             e.stopPropagation()
             setShowDelete(true)
           }}
-          className="text-red-500 hover:bg-red-50 p-2 rounded-full transition shrink-0"
+          className="text-red-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-full transition-all duration-200 hover:rotate-12 hover:scale-110 shrink-0"
         >
           <Trash2 size={18} />
         </button>

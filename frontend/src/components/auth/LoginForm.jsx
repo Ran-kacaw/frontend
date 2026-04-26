@@ -23,7 +23,10 @@ const LoginForm = () => {
     try {
       if (USE_MOCK) {
         await new Promise((r) => setTimeout(r, 800))
-        const user = { id: '1', name: 'User Demo', email: data.email, token: 'mock-token' }
+        const savedUser = localStorage.getItem('user')
+        const parsedUser = savedUser ? JSON.parse(savedUser) : null
+        const userName = (parsedUser && parsedUser.email === data.email) ? parsedUser.name : data.email.split('@')[0]
+        const user = { id: '1', name: userName, email: data.email, token: 'mock-token' }
         localStorage.setItem('token', user.token)
         localStorage.setItem('user', JSON.stringify(user))
         setUser(user)
@@ -49,7 +52,7 @@ const LoginForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-teal text-white py-2.5 rounded-lg font-medium text-sm hover:bg-teal-dark transition disabled:opacity-60"
+        className="w-full bg-teal text-white py-2.5 rounded-lg font-medium text-sm hover:bg-teal-dark hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 disabled:opacity-60"
       >
         {isSubmitting ? 'Memuat...' : 'Masuk'}
       </button>

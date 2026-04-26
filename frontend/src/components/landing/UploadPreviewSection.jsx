@@ -32,7 +32,7 @@ const UploadPreviewSection = () => {
   })
 
   return (
-    <section id="upload-section" className="py-16 bg-bg">
+    <section id="upload-section" className="py-16 bg-gradient-to-b from-[#e8f4f4] to-[#f0f7f7]">
       <div className="max-w-3xl mx-auto px-4">
         <div className="bg-white rounded-2xl p-8 shadow-sm text-center">
           <h2 className="text-section-title md:text-xl font-semibold text-text mb-2">

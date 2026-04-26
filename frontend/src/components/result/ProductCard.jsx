@@ -8,11 +8,11 @@ const ProductCard = ({ product }) => {
   return (
     <div
       onClick={() => navigate(`/product/${product.id}`)}
-      className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer"
+      className="group bg-white rounded-xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
     >
-      <div className="bg-gray-100 rounded-lg h-32 mb-3 flex items-center justify-center overflow-hidden">
+      <div className="bg-gray-100 rounded-lg h-32 mb-3 flex items-center justify-center overflow-hidden group-hover:bg-teal-xlight transition-colors duration-300">
         {product.image ? (
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+          <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <span className="text-gray-400 text-xs">No Image</span>
         )}

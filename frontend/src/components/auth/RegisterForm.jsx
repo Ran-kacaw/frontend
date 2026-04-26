@@ -51,7 +51,7 @@ const RegisterForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-teal text-white py-2.5 rounded-lg font-medium text-sm hover:bg-teal-dark transition disabled:opacity-60"
+        className="w-full bg-teal text-white py-2.5 rounded-lg font-medium text-sm hover:bg-teal-dark hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 disabled:opacity-60"
       >
         {isSubmitting ? 'Memuat...' : 'Daftar'}
       </button>

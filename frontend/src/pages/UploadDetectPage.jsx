@@ -5,6 +5,7 @@ import UploadArea from '../components/upload/UploadArea'
 import ImagePreview from '../components/upload/ImagePreview'
 import DetectButton from '../components/upload/DetectButton'
 import LoadingOverlay from '../components/upload/LoadingOverlay'
+import PageTransition from '../components/shared/PageTransition'
 import { useDetection } from '../hooks/useDetection'
 import { compressImage } from '../utils/imageCompressor'
 import toast from 'react-hot-toast'
@@ -44,23 +45,25 @@ const UploadDetectPage = () => {
   return (
     <div className="min-h-screen bg-bg">
       <Navbar />
-      <div className="max-w-2xl mx-auto px-4 py-8">
-        <h1 className="text-section-title md:text-xl font-semibold text-text text-center mb-2">
-          Deteksi Jerawat
-        </h1>
-        <p className="text-text-muted text-xs text-center mb-8">
-          Unggah foto wajah Anda untuk analisis AI
-        </p>
+      <PageTransition>
+        <div className="max-w-2xl mx-auto px-4 py-8">
+          <h1 className="text-section-title md:text-xl font-semibold text-text text-center mb-2">
+            Deteksi Jerawat
+          </h1>
+          <p className="text-text-muted text-xs text-center mb-8">
+            Unggah foto wajah Anda untuk analisis AI
+          </p>
 
-        {!file ? (
-          <UploadArea onFileSelect={handleFileSelect} />
-        ) : (
-          <div className="space-y-4">
-            <ImagePreview file={file} onRemove={() => setFile(null)} />
-            <DetectButton onClick={handleDetect} disabled={!file} loading={loading} />
-          </div>
-        )}
-      </div>
+          {!file ? (
+            <UploadArea onFileSelect={handleFileSelect} />
+          ) : (
+            <div className="space-y-4">
+              <ImagePreview file={file} onRemove={() => setFile(null)} />
+              <DetectButton onClick={handleDetect} disabled={!file} loading={loading} />
+            </div>
+          )}
+        </div>
+      </PageTransition>
       {loading && <LoadingOverlay />}
     </div>
   )

@@ -1,37 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { Menu, X, User, LogOut } from 'lucide-react'
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const { isAuthenticated, user, logout } = useAuth()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-teal-dark/90 backdrop-blur-sm'
-      }`}
-    >
+    <nav className="sticky top-0 z-50 bg-teal shadow-sm">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-1 font-semibold text-lg">
-          <span className="text-text">Acne</span>
-          <span className="text-teal">Detect</span>
+          <span className="text-yellow">Acne</span>
+          <span className="text-white">Detect</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm">
-          <Link to="/" className="text-text hover:text-teal transition">Home</Link>
-          <Link to="/history" className="text-text hover:text-teal transition">History</Link>
-          <Link to="/contact" className="text-text hover:text-teal transition">Contact Us</Link>
+          <Link
+            to="/"
+            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
+          >
+            Home
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
+          </Link>
+          <Link
+            to="/history"
+            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
+          >
+            History
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
+          </Link>
+          <Link
+            to="/contact"
+            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
+          >
+            Contact Us
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -58,32 +65,32 @@ const Navbar = () => {
           ) : (
             <Link
               to="/login"
-              className="bg-teal text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-teal-dark transition"
+              className="border-2 border-yellow text-yellow px-5 py-2 rounded-full text-sm font-medium hover:bg-yellow hover:text-teal-dark transition-all duration-300 hover:scale-105"
             >
               Login
             </Link>
           )}
         </div>
 
-        <button className="md:hidden text-text" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="md:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3">
-          <Link to="/" onClick={() => setMobileOpen(false)} className="block text-sm text-text">Home</Link>
-          <Link to="/history" onClick={() => setMobileOpen(false)} className="block text-sm text-text">History</Link>
-          <Link to="/contact" onClick={() => setMobileOpen(false)} className="block text-sm text-text">Contact Us</Link>
+        <div className="md:hidden bg-teal-dark border-t border-teal-light/30 px-4 py-4 space-y-3">
+          <Link to="/" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">Home</Link>
+          <Link to="/history" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">History</Link>
+          <Link to="/contact" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">Contact Us</Link>
           {isAuthenticated ? (
             <button
               onClick={() => { logout(); setMobileOpen(false); navigate('/login') }}
-              className="flex items-center gap-2 text-sm text-red-500"
+              className="flex items-center gap-2 text-sm text-yellow hover:text-white transition"
             >
               <LogOut size={16} /> Keluar
             </button>
           ) : (
-            <Link to="/login" onClick={() => setMobileOpen(false)} className="block text-sm text-teal font-medium">Login</Link>
+            <Link to="/login" onClick={() => setMobileOpen(false)} className="block text-sm text-yellow font-medium hover:text-white transition">Login</Link>
           )}
         </div>
       )}
