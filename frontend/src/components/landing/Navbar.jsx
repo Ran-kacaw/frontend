@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import { Menu, X, User, LogOut } from 'lucide-react'
+import { Menu, X, User, LogOut, Home, Clock, Info, Mail } from 'lucide-react'
+
+const navItems = [
+  { to: '/', label: 'Home', icon: Home },
+  { to: '/history', label: 'History', icon: Clock },
+  { to: '/about', label: 'About Us', icon: Info },
+  { to: '/contact', label: 'Contact Us', icon: Mail },
+]
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const { isAuthenticated, user, logout } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   return (
     <nav className="sticky top-0 z-50 bg-teal shadow-sm">
@@ -17,28 +25,27 @@ const Navbar = () => {
           <span className="text-white">Detect</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 text-sm">
-          <Link
-            to="/"
-            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
-          >
-            Home
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
-          </Link>
-          <Link
-            to="/history"
-            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
-          >
-            History
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
-          </Link>
-          <Link
-            to="/contact"
-            className="relative text-white/90 hover:text-yellow transition-colors duration-200 group"
-          >
-            Contact Us
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow group-hover:w-full transition-all duration-300 ease-out rounded-full" />
-          </Link>
+        <div className="hidden md:flex items-center gap-3">
+          {navItems.map((item) => {
+            const Icon = item.icon
+            const isActive = location.pathname === item.to
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 group
+                  ${isActive 
+                    ? 'text-white border border-yellow shadow-[0_0_12px_rgba(234,227,141,0.5)]' 
+                    : 'text-white/90 hover:text-white hover:border hover:border-yellow/50 hover:shadow-[0_0_12px_rgba(234,227,141,0.3)] hover:scale-105'
+                  }`}
+              >
+                <span className="group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <Icon size={16} />
+                </span>
+                {item.label}
+              </Link>
+            )
+          })}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -81,6 +88,7 @@ const Navbar = () => {
         <div className="md:hidden bg-teal-dark border-t border-teal-light/30 px-4 py-4 space-y-3">
           <Link to="/" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">Home</Link>
           <Link to="/history" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">History</Link>
+          <Link to="/about" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">About Us</Link>
           <Link to="/contact" onClick={() => setMobileOpen(false)} className="block text-sm text-white/90 hover:text-yellow transition">Contact Us</Link>
           {isAuthenticated ? (
             <button

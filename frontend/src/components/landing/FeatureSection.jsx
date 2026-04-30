@@ -39,7 +39,7 @@ const FeatureSection = () => {
             <ScrollReveal key={i} delay={i * 100}>
               <div className="bg-bg rounded-2xl p-6 flex gap-4 items-start hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
                 <div className="w-10 h-10 bg-teal-xlight rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-teal transition-all duration-300">
-                  <span className="text-teal group-hover:text-white transition-colors duration-300">
+                  <span className="text-teal group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     {f.icon}
                   </span>
                 </div>
@@ -57,4 +57,3 @@ const FeatureSection = () => {
 }
 
 export default FeatureSection
-

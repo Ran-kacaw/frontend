@@ -10,6 +10,7 @@ import ResultPage from './pages/ResultPage'
 import HistoryPage from './pages/HistoryPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import ContactPage from './pages/ContactPage'
+import AboutPage from './pages/AboutPage'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<AuthPage />} />
           <Route path="/register" element={<AuthPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route
             path="/detect"
@@ -61,4 +63,3 @@ function App() {
 }
 
 export default App
-

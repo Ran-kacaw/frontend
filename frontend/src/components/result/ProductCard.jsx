@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
       </div>
       <h4 className="text-sm font-semibold text-text mb-1 truncate">{product.name}</h4>
       <p className="text-text-muted text-xs mb-2 line-clamp-2">{product.description}</p>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
         <Star size={14} className="text-yellow fill-yellow" />
         <span className="text-xs text-text font-medium">{product.rating}</span>
       </div>
@@ -28,4 +28,3 @@ const ProductCard = ({ product }) => {
 }
 
 export default ProductCard
-

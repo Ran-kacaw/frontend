@@ -34,7 +34,7 @@ const HowItWorksSection = () => {
             <ScrollReveal key={i} delay={i * 150}>
               <div className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
                 <div className="w-14 h-14 bg-teal-xlight rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-teal group-hover:text-white transition-all duration-300">
-                  <span className="text-teal group-hover:text-white transition-colors duration-300">
+                  <span className="text-teal group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     {step.icon}
                   </span>
                 </div>
@@ -50,4 +50,3 @@ const HowItWorksSection = () => {
 }
 
 export default HowItWorksSection
-
